@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import Main from "./layouts/Main";
+import CarDetail from "./pages/CarDetail";
 import HomePage from "./pages/HomePage";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route element={<Main></Main>}>
           <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/car/:id" element={<CarDetail></CarDetail>}></Route>
         </Route>
       </Routes>
     </>

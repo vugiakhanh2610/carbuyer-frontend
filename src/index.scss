@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary font-body p-5 text-white;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1000px;
+    @apply mx-auto;
+  }
+}

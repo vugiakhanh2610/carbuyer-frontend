@@ -1,10 +1,16 @@
+import { Route, Routes } from "react-router";
+import Main from "./layouts/Main";
+import HomePage from "./pages/HomePage";
+
 function App() {
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold underline text-orange-400">
-        Hello world!
-      </h1>
-    </div>
+    <>
+      <Routes>
+        <Route element={<Main></Main>}>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+        </Route>
+      </Routes>
+    </>
   );
 }
 

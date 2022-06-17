@@ -7,7 +7,7 @@ module.exports = {
       },
       colors: {
         primary: "#E5E5E5",
-        is_active: "#163668",
+        secondary: "#163668",
         btn_red: "#df142d",
         btn_blue: "#0a6ada",
       },

@@ -2,18 +2,15 @@ import React from "react";
 import { useParams } from "react-router";
 import useSWR from "swr";
 import { fetchAPI, fetcher } from "../api/config";
-import Loading from "../components/Loading";
 
 const CarDetail = () => {
   const { id } = useParams();
   const { data, error } = useSWR(fetchAPI.getAll("car", id), fetcher);
-  const loading = !data && !error;
   if (!data) return null;
-  const cars = data.data;
-  const { name, img, description, price, name_brand } = cars[0];
+  const car = data.data;
+  const { name, img, description, price, name_brand } = car[0];
   return (
     <div className="w-[900px] mx-auto bg-white rounded-lg py-10 shadow-lg">
-      {loading && <Loading></Loading>}
       <div className="w-[50%] h-[300px] max-w-[800px] mx-auto">
         <img
           src={img}

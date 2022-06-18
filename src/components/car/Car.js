@@ -5,7 +5,7 @@ const Car = ({ data }) => {
   const navigate = useNavigate();
   const { id, name, img, price, name_brand } = data;
   return (
-    <div className="w-full h-[180px] bg-white p-1 flex gap-x-3 items-center justify-around rounded-lg mx-auto mb-2">
+    <div className="w-full h-[180px] bg-white p-1 flex gap-x-3 items-center justify-around rounded-lg mx-auto mb-2 shadow-lg">
       <div className="w-[30%] h-full ">
         <img src={img} alt="" className="w-full h-full object-cover" />
       </div>

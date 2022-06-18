@@ -15,7 +15,7 @@ const Header = () => {
         Home
       </NavLink>
       <NavLink
-        to="/brands"
+        to="/brand"
         className={({ isActive }) =>
           isActive
             ? "text-white bg-secondary py-2 px-4 rounded-3xl"

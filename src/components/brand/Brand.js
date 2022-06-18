@@ -1,20 +1,31 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import useSWR from "swr";
-import { fetchAPI, fetcher } from "../../api/config";
+import { fetchAPI } from "../../api/config";
+import FormModal from "./BrandModal";
+import DeleteBrand from "./DeleteBrand";
+
+export const BrandContext = React.createContext({
+  brands: [],
+  fetchBrands: () => {},
+});
 
 const Brand = () => {
   const navigate = useNavigate();
 
   const [brands, setBrands] = useState();
-  const { data, error } = useSWR(fetchAPI.getAll("brand"), fetcher);
+  const fetchBrands = async () => {
+    const response = await axios.get(fetchAPI.getAll("brand"));
+    const data = response.data;
+    setBrands(data.data);
+  };
 
   useEffect(() => {
-    data && setBrands(data.data);
-  }, [data]);
+    fetchBrands();
+  }, []);
 
   return (
-    <div className="container">
+    <BrandContext.Provider value={{ brands, fetchBrands }}>
       <div className="grid grid-cols-3 gap-10">
         {brands &&
           brands[0].map((item, index) => (
@@ -32,28 +43,22 @@ const Brand = () => {
               </h3>
               <div className="flex items-center justify-between text-white text-sm font-medium mb-2 ">
                 <button
-                  className="w-[80px] bg-primary py-2 px-4 rounded-md"
+                  className="py-2 px-6 bg-primary text-sm text-white font-medium rounded-3xl"
                   onClick={() => navigate(`/brand/${item.id}`)}
                 >
                   View
                 </button>
-                <button
-                  className="w-[80px] bg-btn_blue py-2 px-4 rounded-md"
-                  onClick={() => navigate(`/brand/${item.id}`)}
-                >
-                  Update
-                </button>
-                <button
-                  className="w-[80px] bg-btn_red py-2 px-4 rounded-md"
-                  onClick={() => navigate(`/brand/${item.id}`)}
-                >
-                  Delete
-                </button>
+                <FormModal
+                  children="Update"
+                  id={item.id}
+                  brand={item}
+                ></FormModal>
+                <DeleteBrand id={item.id}></DeleteBrand>
               </div>
             </div>
           ))}
       </div>
-    </div>
+    </BrandContext.Provider>
   );
 };
 

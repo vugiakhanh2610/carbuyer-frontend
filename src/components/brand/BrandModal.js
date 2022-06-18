@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { fetchAPI } from "../../api/config";
 import { BrandContext } from "./Brand";
-import modal from "../../modal.css";
+import "../../modal.css";
 const customStyles = {
   content: {
     top: "50%",
@@ -46,6 +46,12 @@ const FormModal = ({ children, id, brand }) => {
     closeModal();
     await fetchBrands();
   };
+
+  useEffect(() => {
+    setName(brand ? brand.name : "");
+    setLogo(brand ? brand.logo : "");
+    setRetailer(brand ? brand.retailer : "");
+  }, [id]);
 
   return (
     <div>

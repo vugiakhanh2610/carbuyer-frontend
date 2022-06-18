@@ -8,7 +8,7 @@ const BrandDetail = () => {
   const { data, error } = useSWR(fetchAPI.getAll("brand", id), fetcher);
   if (!data) return null;
   const brand = data.data;
-  const { logo, name, retailer } = brand[0];
+  const { logo, name, retailer } = brand;
   return (
     <div className="w-[500px] mx-auto bg-white rounded-lg py-10 shadow-xl">
       <img

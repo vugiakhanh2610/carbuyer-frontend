@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { fetchAPI } from "../../api/config";
 import FormModal from "./BrandModal";
 import DeleteBrand from "./DeleteBrand";
 
@@ -10,28 +9,28 @@ export const BrandContext = React.createContext({
   fetchBrands: () => {},
 });
 
-const Brand = () => {
+const Brand = ({ url }) => {
   const navigate = useNavigate();
 
   const [brands, setBrands] = useState();
   const fetchBrands = async () => {
-    const response = await axios.get(fetchAPI.getAll("brand"));
+    const response = await axios.get(url);
     const data = response.data;
     setBrands(data.data);
   };
 
   useEffect(() => {
     fetchBrands();
-  }, []);
+  }, [url]);
 
   return (
     <BrandContext.Provider value={{ brands, fetchBrands }}>
       <div className="grid grid-cols-3 gap-10">
         {brands &&
-          brands[0].map((item, index) => (
+          brands.map((item, index) => (
             <div
               key={index}
-              className="p-3 bg-white rounded-lg select-none shadow-md"
+              className="p-3 bg-white rounded-lg select-none shadow-xl"
             >
               <img
                 src={item.logo}

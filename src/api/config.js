@@ -8,4 +8,5 @@ export const fetchAPI = {
   add: (type) => `${endpoint}/${type}`,
   update: (type, id) => `${endpoint}/${type}/${id}`,
   delete: (type, id) => `${endpoint}/${type}/${id}`,
+  search: (type, query) => `${endpoint}/${type}/search/?query=${query}`,
 };

@@ -8,7 +8,7 @@ const CarDetail = () => {
   const { data, error } = useSWR(fetchAPI.getAll("car", id), fetcher);
   if (!data) return null;
   const car = data.data;
-  const { name, img, description, price, name_brand } = car[0];
+  const { name, img, description, price, name_brand } = car;
   return (
     <div className="w-[900px] mx-auto bg-white rounded-lg py-10 shadow-lg">
       <div className="w-[50%] h-[300px] max-w-[800px] mx-auto">

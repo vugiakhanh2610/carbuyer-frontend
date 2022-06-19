@@ -49,10 +49,6 @@ const BrandPage = () => {
         </div>
       </div>
       <Brand url={url}></Brand>
-      {/* </div> */}
-      {/* <div className="w-[40%]">
-        <BrandForm></BrandForm>
-      </div> */}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Loading from "../Loading";
 import FormModal from "./BrandModal";
 import DeleteBrand from "./DeleteBrand";
 
@@ -25,6 +26,7 @@ const Brand = ({ url }) => {
 
   return (
     <BrandContext.Provider value={{ brands, fetchBrands }}>
+      {!brands && <Loading></Loading>}
       <div className="grid grid-cols-3 gap-10">
         {brands &&
           brands.map((item, index) => (

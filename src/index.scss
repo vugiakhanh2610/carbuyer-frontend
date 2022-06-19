@@ -14,8 +14,3 @@
     @apply mx-auto;
   }
 }
-@layer components {
-  .ReactModal__Content .ReactModal__Content--after-open {
-    width: 500px;
-  }
-}

@@ -89,6 +89,7 @@ const FormModal = ({ children, id, brand }) => {
               <input
                 className="w-full py-2 px-5 bg-primary rounded-lg text-secondary outline-none"
                 type="text"
+                required="required"
                 placeholder="Brand's name..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -99,6 +100,7 @@ const FormModal = ({ children, id, brand }) => {
               <input
                 className="w-full py-2 px-5 bg-primary rounded-lg text-secondary outline-none"
                 type="text"
+                required="required"
                 placeholder="Brand's logo url..."
                 value={logo}
                 onChange={(e) => setLogo(e.target.value)}
@@ -109,6 +111,7 @@ const FormModal = ({ children, id, brand }) => {
               <input
                 className="w-full py-2 px-5 bg-primary rounded-lg text-secondary outline-none"
                 type="text"
+                required="required"
                 placeholder="Brand's retailer..."
                 value={retailer}
                 onChange={(e) => setRetailer(e.target.value)}
